@@ -1,7 +1,7 @@
 module.exports = {
 
   up: async (queryInterface, Sequelize) => Promise.all([
-    await queryInterface.removeColumn('Intervals', 'eventsMousbe'),
+    await queryInterface.removeColumn('Intervals', 'eventsMouse'),
     await queryInterface.removeColumn('Intervals', 'eventsKeyboard'),
     await queryInterface.addColumn('Intervals', 'systemActivity', { type: Sequelize.INTEGER }),
     await queryInterface.addColumn('Intervals', 'keyboardActivity', { type: Sequelize.INTEGER }),
