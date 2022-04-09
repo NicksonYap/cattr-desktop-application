@@ -220,6 +220,7 @@
 		"axios": "^0.21.1",
 		"chalk": "^4.1.1",
 		"electron-hotkey": "0.0.1-alpha.1",
+		"iohook": "git+https://github.com/wilix-team/iohook.git#229774494c7c338936d0596acd3f4693d363ea39",
 		"is-plain-obj": "^4.0.0",
 		"keytar": "^7.7.0",
 		"nanoid": "^3.1.23",
@@ -263,5 +264,20 @@
 		"vue-template-compiler": "^2.6.12",
 		"vuedraggable": "^2.24.3",
 		"vuex": "^3.6.2"
+	},
+	"iohook": {
+		"targets": [
+			"node-83",
+			"electron-89"
+		],
+		"platforms": [
+			"win32",
+			"darwin",
+			"linux"
+		],
+		"arches": [
+			"x64",
+			"ia32"
+		]
 	}
 }

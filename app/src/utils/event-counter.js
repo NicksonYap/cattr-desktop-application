@@ -1,4 +1,5 @@
 const { powerMonitor } = require('electron');
+const ioHook = require('iohook');
 
 class EventCounter {
 
@@ -126,6 +127,22 @@ class EventCounter {
 
     }, 1000);
 
+    const mouseEvent = (event) => {
+      // console.log(event); // { type: 'mousemove', x: 700, y: 400 }
+      this.mouseActiveDuringThisSecond = true;
+    }
+    const keyboardEvent = (event) => {
+      // console.log(event); // { type: 'mousemove', x: 700, y: 400 }
+      this.keyboardActiveDuringThisSecond = true;
+    }
+    ioHook.on('mousemove', mouseEvent);
+    ioHook.on('mousedown', mouseEvent);
+    ioHook.on('mousewheel', mouseEvent);
+
+    ioHook.on('keydown', keyboardEvent);
+
+    ioHook.start();
+
     this.detectorIntervalId = setInterval(() => {
 
       if (powerMonitor.getSystemIdleTime() === 0)
@@ -139,6 +156,8 @@ class EventCounter {
    * Stops event tracker
    */
   stop() {
+    ioHook.removeAllListeners();
+    ioHook.stop();
 
     if (this.intervalId)
       clearInterval(this.intervalId);
