@@ -430,7 +430,7 @@ class TaskTracker extends EventEmitter {
     // Dispatch corresponding event
     this.setTrackerStatus(true);
     this.emit(action, this.currentTask.id);
-    log.debug(`Started task "${this.currentTask.name}" with ${this.captureInterval}s capture interval`);
+    log.debug(`Started task "${this.currentTask.name}" with ${this.captureInterval}s capture interval & ${this.inactivityTimeLimit}s inactivity timeout`);
 
   }
 
