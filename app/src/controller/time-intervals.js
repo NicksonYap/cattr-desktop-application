@@ -66,10 +66,10 @@ module.exports.pushSyncedIntervalInQueue = async (interval, screenshot, remoteId
     remoteId,
   };
 
-  if (interval.keyboard_fill)
+  if (interval.keyboard_fill || true)
     formattedInterval.keyboardActivity = interval.keyboard_fill;
 
-  if (interval.mouse_fill)
+  if (interval.mouse_fill || true)
     formattedInterval.mouseActivity = interval.mouse_fill;
 
   // Attach screenshot if it is exists
@@ -104,10 +104,10 @@ module.exports.backupInterval = async (interval, screenshot) => {
       synced: false,
     };
 
-    if (interval.keyboard_fill)
+    if (interval.keyboard_fill || true)
       convertedInterval.keyboardActivity = interval.keyboard_fill;
 
-    if (interval.mouse_fill)
+    if (interval.mouse_fill || true)
       convertedInterval.mouseActivity = interval.mouse_fill;
 
   } else {
@@ -168,10 +168,10 @@ module.exports.pushTimeInterval = async (interval, intervalScreenshot) => {
 
   };
 
-  if (interval.keyboard_fill)
+  if (interval.keyboard_fill || true)
     actualInterval.keyboardActivity = interval.keyboard_fill;
 
-  if (interval.mouse_fill)
+  if (interval.mouse_fill || true)
     actualInterval.mouseActivity = interval.mouse_fill;
 
   // Check offline mode status
@@ -273,10 +273,10 @@ module.exports.backedUpIntervalsPush = async () => {
         activity_fill: interval.systemActivity,
       };
 
-      if (interval.keyboardActivity)
+      if (interval.keyboardActivity || true)
         formattedInterval.keyboard_fill = interval.keyboardActivity;
 
-      if (interval.mouseActivity)
+      if (interval.mouseActivity || true)
         formattedInterval.mouse_fill = interval.mouseActivity;
 
       intervalPushPromises.push(module.exports.pushTimeInterval(formattedInterval, interval.screenshot));

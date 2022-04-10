@@ -49,7 +49,7 @@ class EventCounter {
      * Flag representing system activity detection during this second
      * @type {Boolean}
      */
-    this.systemActiveDuringThisSecond = true;
+    this.systemActiveDuringThisSecond = false;
 
   }
 
@@ -173,7 +173,7 @@ class EventCounter {
 
     this.keyboardActiveDuringThisSecond = false;
     this.mouseActiveDuringThisSecond = false;
-    this.systemActiveDuringThisSecond = true;
+    this.systemActiveDuringThisSecond = false;
 
     if (this.detectorIntervalId) {
 
@@ -196,7 +196,7 @@ class EventCounter {
 
     this.keyboardActiveDuringThisSecond = false;
     this.mouseActiveDuringThisSecond = false;
-    this.systemActiveDuringThisSecond = true;
+    this.systemActiveDuringThisSecond = false;
 
   }
 

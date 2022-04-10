@@ -56,10 +56,10 @@ const deferredIntervalsPush = async () => {
 
       };
 
-      if (rawInterval.mouseActivity)
+      if (rawInterval.mouseActivity || true)
         preparedInterval.mouse_fill = rawInterval.mouseActivity;
 
-      if (rawInterval.keyboardActivity)
+      if (rawInterval.keyboardActivity || true)
         preparedInterval.keyboard_fill = rawInterval.keyboardActivity;
 
       // Push deferred interval
