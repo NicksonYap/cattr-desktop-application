@@ -1,6 +1,6 @@
 ## For windows
 
-Extract and copy contents `electron-v89-win32-x64.zip` to `node_modules/builds/electron-v89-win32-x64/build/Release with same structure
+Extract and copy contents `electron-v89-win32-x64.zip` to `node_modules/iohook/builds/electron-v89-win32-x64/build/Release with same structure
 
 ## To self-build
 
