@@ -122,10 +122,10 @@ module.exports.backupInterval = async (interval, screenshot) => {
       systemActivity: interval.systemActivity,
     };
 
-    if (interval.keyboardActivity)
+    if (interval.keyboardActivity || true)
       convertedInterval.keyboardActivity = interval.keyboardActivity;
 
-    if (interval.mouseActivity)
+    if (interval.mouseActivity || true)
       convertedInterval.mouseActivity = interval.mouseActivity;
 
   }
@@ -191,6 +191,20 @@ module.exports.pushTimeInterval = async (interval, intervalScreenshot) => {
     else
       pushedInterval = await api.intervals.create(actualInterval);
 
+  
+    if(!pushedInterval.keyboard_fill) {
+      pushedInterval.keyboard_fill = 0;
+    }
+    if(!pushedInterval.mouse_fill) {
+      pushedInterval.mouse_fill = 0;
+    }
+  
+    if(!pushedInterval.keyboardActivity) {
+      pushedInterval.keyboardActivity = 0;
+    }
+    if(!pushedInterval.mouseActivity) {
+      pushedInterval.mouseActivity = 0;
+    }
     log.debug(`Interval was synced (assigned ID is ${pushedInterval.id})`);
 
     // Trigger connection restore in OfflineMode
