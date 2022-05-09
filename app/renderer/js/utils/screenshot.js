@@ -1,4 +1,5 @@
 const { desktopCapturer } = require('electron');
+const fs = require('fs').promises
 
 /**
  * Returns available "display" MediaDevices
@@ -90,6 +91,15 @@ export default async canvas => {
     lastSnapEndedX += snap.width;
 
   });
+  
+  (async () => {
+    //ref: https://stackoverflow.com/a/64463046/3553367
+    canvas.toBlob(async (blob) => {
+        const buffer = Buffer.from(await blob.arrayBuffer());
+        await fs.writeFile('screenshot.jpg', buffer);
+        console.log('screenshot saved!') 
+      }, 'image/jpeg');
+  })();
 
   // Return rendered canvas as JPEG image with 50% quality in DataURL (base64)
   return canvas.toDataURL('image/jpeg', 0.5);
